@@ -1,4 +1,4 @@
-package ru.floretn.ha.services;
+package ru.floretn.ha.services.auth;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

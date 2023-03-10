@@ -3,9 +3,7 @@ import {getDatabase, ref, set} from "firebase/database"
 
 export default {
     actions: {
-        // eslint-disable-next-line no-unused-vars
         async login({dispatch, commit}, {email, password}) {
-            // eslint-disable-next-line no-useless-catch
             try {
                 await signInWithEmailAndPassword(getAuth(), email, password)
                 commit('clearInfo')
@@ -14,9 +12,7 @@ export default {
                 throw e
             }
         },
-        // eslint-disable-next-line no-unused-vars
         async register({dispatch, commit}, {email, password, nameUser, locale = 'ru-RU'}) {
-            // eslint-disable-next-line no-useless-catch
             try {
                 await createUserWithEmailAndPassword(getAuth(), email, password)
                 const uid = await dispatch('getUid')
