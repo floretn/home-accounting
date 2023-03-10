@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "logger" : {
+    "name" : "git2consul",
+    "streams" : [
+      {
+        "level":  "debug",
+        "stream": "process.stdout"
+      }
+    ]
+  },
+  "repos" : [{
+    "name" : "print_module",
+    "url" : "ssh://git@bitbucket.devops.sberinsur.local:22/thi/pmconfigrepo-private.git",
+    "branches" : ["master"],
+    "hooks": [{
+      "type" : "polling",
+      "interval" : "6001"
+    }]
+  }]
+}

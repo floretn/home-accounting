@@ -1,0 +1,28 @@
+{
+  "listener": {
+    "tcp": {
+      "address": "0.0.0.0:8200",
+      "scheme": "http",
+      "tls_disable": "true"
+    }
+  },
+
+  "backend": {
+    "consul": {
+      "address": "consul-server:8500",
+      "advertise_addr": "http://127.0.0.1:8200",
+      "path": "vault/",
+      "scheme": "http"
+    }
+  },
+
+  "telemetry": {
+    "prometheus_retention_time": "5s",
+    "disable_hostname": true
+  },
+
+  "max_lease_ttl": "2555556h",
+  "default_lease_ttl": "2555556h",
+
+  "ui": "true"
+}

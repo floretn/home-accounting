@@ -1,0 +1,50 @@
+buildscript {
+    ext {
+        flywayVersion = "6.0.0"
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.3.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id "org.flywaydb.flyway" version "${flywayVersion}"
+    id 'java'
+}
+
+group = 'ru.floretn.ha'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+compileJava.options.encoding = "UTF-8"
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //FRONT
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    //DB
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.session:spring-session-jdbc'
+    implementation 'org.postgresql:postgresql'
+    implementation "org.flywaydb:flyway-core:${flywayVersion}"
+
+    //SECURITY
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    //LOMBOK
+    compileOnly 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+}

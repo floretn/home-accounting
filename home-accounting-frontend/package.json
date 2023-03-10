@@ -1,0 +1,37 @@
+{
+  "name": "vue-test",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@vuelidate/core": "^2.0.0",
+    "@vuelidate/validators": "^2.0.0",
+    "chart.js": "^3.9.1",
+    "core-js": "^3.8.3",
+    "firebase": "^9.17.1",
+    "lodash": "^4.17.21",
+    "materialize-css": "^1.0.0-rc.2",
+    "register-service-worker": "^1.7.2",
+    "vue": "^3.2.13",
+    "vue-meta": "^3.0.0-alpha.7",
+    "vue-chart-3": "^3.1.8",
+    "vue-router": "^4.0.3",
+    "vue3-cookies": "^1.0.6",
+    "vuejs-paginate-next": "^1.0.2",
+    "vuex": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-pwa": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "sass": "^1.32.7",
+    "sass-loader": "^12.0.0"
+  }
+}

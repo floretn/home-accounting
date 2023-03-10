@@ -1,0 +1,38 @@
+{
+  "LogoutTitle": "Logout",
+  "AccountTitle": "Bill",
+  "HistoryTitle": "History",
+  "PlanningTitle": "Planning",
+
+  "PageNotFound": "You found my site, but you didn't find the page",
+
+  "ProfileTitle": "Profile",
+  "MessageEnterName": "Enter Name!",
+  "NameUser": "Firstname",
+
+  "CategoryTitle": "Categories",
+  "NoCategories": "No categories have been created yet",
+  "AddCategory": "Create new category",
+  "EnterCategoryName": "Enter category name",
+  "MinValue": "Min value",
+  "WasCreated": "was created",
+  "SuccessEdited": "successfully updated",
+  "ChooseCategory": "Choose category",
+  "EnterLimit": "Enter limit",
+
+  "RecordTitle": "New record",
+  "SuccessRecordCreate": "Record was successfully created",
+  "NoEnoughMoney": "Insufficient funds in the account",
+  "NoRecords": "No records have been created yet",
+  "CreateRecord": "Create new record",
+
+  "RulesAgree": "Agree with the rules",
+  "NeedAgree": "It is necessary to agree with the rules",
+  "AccountExists": "Already have an account",
+
+  "LogoutMessage": "You have logged out of your account",
+  "NeedLoginMessage": "Authorization is required to access the system",
+  "NoSuchEmailMessage": "The user with this email was not found",
+  "SuchEmailExistsMsg": "This email is already registered in the system"
+
+}

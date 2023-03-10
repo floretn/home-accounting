@@ -1,0 +1,83 @@
+version: "3.9"
+services:
+
+#  consul-server:
+#    image: consul:1.9.4
+#    volumes:
+#      - ./config/consul/data:/consul/data
+#      - ./config/consul/config:/consul/config
+#    ports:
+#      - 8500:8500
+#      - 8600:8600/udp
+#      - 8300
+#    command: "agent -server -ui -node=server-1 -bootstrap-expect=1 -client=0.0.0.0 -data-dir /consul/data"
+#
+#  vault:
+#    image: vault:1.7.0
+#    volumes:
+#      - ./config/vault:/vault
+#      - ./config/vault/config:/config
+#      - ./config/vault/policies:/policies
+#      - ./config/vault/_data:/_data
+#      - ./wait-for.sh:/wait-for.sh
+#      - ./.env:/.env
+#    ports:
+#      - 8200:8200
+#    environment:
+#      - VAULT_ADDR=http://127.0.0.1:8200
+#    cap_add:
+#      - IPC_LOCK
+#    depends_on:
+#      - consul-server
+#    command: sh -c './wait-for.sh consul-server:8500 -- vault server -config=/config/vault.json'
+#
+#  vault-setup:
+#    image: vault:1.7.0
+#    volumes_from:
+#      - vault
+#    ports:
+#      - 8202:8202
+#    depends_on:
+#      - vault
+#    command: sh -c './wait-for.sh vault:8200 -- /vault/setup.sh ${BB_USER} ${BB_PASS}'
+#
+#  git2consul:
+#    build: ./config/git2consul
+#    volumes:
+#      - ./config/git2consul:/etc/git2consul.d
+#      - ~/.ssh:/root/.ssh
+#    ports:
+#      - 8111:8111
+#    depends_on:
+#      - consul-server
+#      - vault-setup
+#      - vault
+#    command: sleep 2000 && sudo git2consul --config-file /etc/git2consul.d/git2consul.json -e consul-server -p 8500
+
+  postgresql:
+    image: 'postgres:13.1-alpine'
+    environment:
+      - POSTGRES_DB=ha-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./config/db/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    restart: unless-stopped
+
+volumes:
+  pgadmin:
