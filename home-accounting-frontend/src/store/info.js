@@ -1,4 +1,5 @@
 import {getDatabase, ref, get, update} from "firebase/database"
+import * as rest from '@/utils/rest.utils'
 
 export default {
     state: {
@@ -26,9 +27,10 @@ export default {
         },
         async fetchInfo({dispatch, commit}) {
             try {
-                const uid = await dispatch('getUid')
-                const info = (await get(ref(getDatabase(), `/users/${uid}/info`))).val()
-                commit('setInfo', info)
+                const info = await rest.getRequest(`http://localhost:8081/users/${await dispatch('getUid')}/info`
+                    , await dispatch('getToken'))
+                console.log(info.info)
+                commit('setInfo', info.info)
             } catch (e) {
                 commit('setError', e)
                 throw e

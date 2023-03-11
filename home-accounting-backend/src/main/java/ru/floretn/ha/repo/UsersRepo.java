@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.floretn.ha.domain.UserEntity;
 
 @Repository
-public interface UserRepo extends JpaRepository<UserEntity, Long> {
+public interface UsersRepo extends JpaRepository<UserEntity, Long> {
 }

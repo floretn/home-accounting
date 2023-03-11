@@ -61,7 +61,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const currentUser = getAuth().currentUser
+  const currentUser = JSON.parse(localStorage.getItem("user"))
+  console.log(currentUser)
   const requireAuth = to.matched.some(record => record.meta.auth)
   if (requireAuth && !currentUser) {
     next('/login?message=login')

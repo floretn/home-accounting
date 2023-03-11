@@ -1,7 +1,7 @@
 <template>
   <form class="card auth-card" @submit.prevent="submitHandler">
     <div class="card-content">
-      <span class="card-title">{{localizeFilter('Home accounting', getLocale())}}</span>
+      <span class="card-title">{{ localizeFilter('Home accounting', getLocale()) }}</span>
       <div class="input-field">
         <input
           id="email"
@@ -14,13 +14,13 @@
           class="helper-text invalid"
           v-if="(v$.email.$dirty && v$.email.required.$invalid)"
         >
-          {{localizeFilter('Enter', getLocale())}} Email!
+          {{ localizeFilter('Enter', getLocale()) }} Email!
         </small>
         <small
           class="helper-text invalid"
           v-else-if="(v$.email.$dirty && v$.email.email.$invalid)"
         >
-          {{localizeFilter('Enter correct', getLocale())}} Email!
+          {{ localizeFilter('Enter correct', getLocale()) }} Email!
         </small>
       </div>
       <div class="input-field">
@@ -30,18 +30,18 @@
           v-model="password"
           :class="{invalid: (v$.password.$dirty && v$.password.required.$invalid) || (v$.password.$dirty && v$.password.minLength.$invalid)}"
         >
-        <label for="password">{{localizeFilter('Password', getLocale())}}</label>
+        <label for="password">{{ localizeFilter('Password', getLocale()) }}</label>
         <small
           class="helper-text invalid"
           v-if="(v$.password.$dirty && v$.password.required.$invalid)"
         >
-          {{localizeFilter('Enter password', getLocale())}}
+          {{ localizeFilter('Enter password', getLocale()) }}
         </small>
         <small
           class="helper-text invalid"
           v-else-if="(v$.password.$dirty && v$.password.minLength.$invalid)"
         >
-          {{localizeFilter('Min length', getLocale())}}: {{v$.password.minLength.$params.min}}
+          {{ localizeFilter('Min length', getLocale()) }}: {{ v$.password.minLength.$params.min }}
         </small>
       </div>
     </div>
@@ -51,14 +51,14 @@
           class="btn waves-effect waves-light auth-submit"
           type="submit"
         >
-          {{localizeFilter('Login', getLocale())}}
+          {{ localizeFilter('Login', getLocale()) }}
           <i class="material-icons right">send</i>
         </button>
       </div>
 
       <p class="center">
-        {{localizeFilter('No account', getLocale())}}?
-        <router-link :to="'/register'">{{localizeFilter('Registration', getLocale())}}</router-link>
+        {{ localizeFilter('No account', getLocale()) }}?
+        <router-link :to="'/register'">{{ localizeFilter('Registration', getLocale()) }}</router-link>
       </p>
 
 
@@ -76,15 +76,15 @@
 
 <script>
 import useVuelidate from '@vuelidate/core'
-import { required, email, minLength } from '@vuelidate/validators'
+import {required, email, minLength} from '@vuelidate/validators'
 import messages from "@/utils/messages"
 import localizeFilter from "@/filters/localize.filter"
-import { useCookies } from "vue3-cookies"
+import {useCookies} from "vue3-cookies"
 import {useMeta} from "vue-meta";
 
 export default {
   name: 'loginView',
-  setup () {
+  setup() {
     useMeta({
       title: `${localizeFilter('Login', document.cookie.includes('locale=en-US') ? 'en-US' : 'ru-RU')}`
     })

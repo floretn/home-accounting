@@ -5,9 +5,19 @@ export default {
     actions: {
         async login({dispatch, commit}, {email, password}) {
             try {
-                await signInWithEmailAndPassword(getAuth(), email, password)
+                const response = await fetch(`http://localhost:8081/login`, {
+                    headers: {'Content-Type': 'application/json'},
+                    method: 'POST',
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                })
+                const loginInfoResp = await response.json()
+                localStorage.setItem("user", JSON.stringify(loginInfoResp))
                 commit('clearInfo')
             } catch (e) {
+                console.error(e)
                 commit('setError', e)
                 throw e
             }
@@ -28,8 +38,13 @@ export default {
             }
         },
         getUid() {
-            const user = getAuth().currentUser
-            return user ? user.uid : null
+            const uid = JSON.parse(localStorage.getItem("user")).userId
+            console.log(uid)
+            return uid ? uid : null
+        },
+        getToken() {
+            const token = JSON.parse(localStorage.getItem("user")).token
+            return token ? token : null
         },
         async logout({commit}) {
             await signOut(getAuth())

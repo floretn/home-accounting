@@ -30,7 +30,7 @@ public class LoginService {
         Map<Object, Object> response = new HashMap<>();
         AuthInfoEntity authInfoEntity = (AuthInfoEntity) SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
-        response.put("user", authInfoEntity.getUser());
+        response.put("userId", authInfoEntity.getUser().getUserId());
         response.put("token", token);
         return response;
     }

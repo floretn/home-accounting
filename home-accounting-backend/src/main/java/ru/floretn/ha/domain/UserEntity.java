@@ -1,5 +1,6 @@
 package ru.floretn.ha.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "usr_pk")
+    @JsonIgnore
     private long userId;
     @Column(name = "usr_name")
     private String name;
