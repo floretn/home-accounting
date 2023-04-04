@@ -79,8 +79,7 @@
 
   "LogoutMessage": "Вы вышли из аккаунта",
   "NeedLoginMessage": "Для доступа к системе необходима авторизация",
-  "NoSuchEmailMessage": "Пользователь с таким email не найден",
-  "Invalid password": "Неверный пароль",
+  "Wrong email or password": "Неверный email или пароль",
   "SuchEmailExistsMsg": "Такой email уже зарегестрирован в системе"
 
 }

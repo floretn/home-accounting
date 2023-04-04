@@ -1,4 +1,4 @@
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut} from "firebase/auth"
+import {getAuth, createUserWithEmailAndPassword, signOut} from "firebase/auth"
 import {getDatabase, ref, set} from "firebase/database"
 
 export default {
@@ -13,6 +13,13 @@ export default {
                         password: password
                     })
                 })
+                if (response.status === 401) {
+                    const e = new Error('')
+                    e.code = 'auth/wrong-email-or-password'
+                    throw e
+                } else if (!response.ok)
+                    throw new Error(response.status + '')
+
                 const loginInfoResp = await response.json()
                 localStorage.setItem("user", JSON.stringify(loginInfoResp))
                 commit('clearInfo')
